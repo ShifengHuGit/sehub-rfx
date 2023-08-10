@@ -1,0 +1,60 @@
+<!-- Copyright (c) Microsoft Corporation.
+     Licensed under the MIT License. -->
+     
+<!-- This file shows how to design a first-run page that provides a welcome screen to the user about the features of the add-in. -->
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contoso Task Pane Add-in</title>
+
+
+
+
+    <!-- For more information on Office UI Fabric, visit https://developer.microsoft.com/fabric. -->
+    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.1/css/fabric.min.css"/>
+
+    <!-- Template styles -->
+    <link href="{% static 'rfx_server/taskpane.css' %}" rel="stylesheet" type="text/css" />
+</head>
+
+<body class="ms-font-m ms-welcome ms-Fabric">
+    <header>
+        <div class="title_header" style="border-bottom: 1px solid rgb(113, 108, 108);">
+            <svg class="u30-oicn" xmlns="http://www.w3.org/2000/svg" width="64" height="42" viewBox="0 0 32 21">
+                <path fill="#C74634" d="M9.9,20.1c-5.5,0-9.9-4.4-9.9-9.9c0-5.5,4.4-9.9,9.9-9.9h11.6c5.5,0,9.9,4.4,9.9,9.9c0,5.5-4.4,9.9-9.9,9.9H9.9 M21.2,16.6c3.6,0,6.4-2.9,6.4-6.4c0-3.6-2.9-6.4-6.4-6.4h-11c-3.6,0-6.4,2.9-6.4,6.4s2.9,6.4,6.4,6.4H21.2">
+                </path>
+              </svg>
+            
+            <p class="head_logo"> SE HUB RFX SYSTEM</p>
+            {% csrf_token %}
+        </div>
+    </header>
+    <section id="sideload-msg" class="ms-welcome__main">
+       
+    </section>
+    <main id="app-body" class="ms-welcome__main" style="display: none; margin-top: 150px;">
+        <div>
+            <button id="getCellData" class="btn btn-gray-800">質問コピー</button>
+        </div>
+
+        <div id="text" class="card">ここで選択された内容を表示します
+        </div>
+        <div id="selected-card" class="card-s">
+            <div class="divContainer-row ">
+                <div class="div-row" style="text-align: right;">検索 Keyword:</div>
+                <div class="div-row" style="text-align: left;" id="selected-text"> </div>
+            </div>
+        </div>      
+    </main>
+</body>
+    <!-- Office JavaScript API -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+    <script type="text/javascript" src="{% static 'rfx_server/functions.js' %}"></script>
+    <script type="text/javascript" src="{% static 'rfx_server/taskpane.js' %}"></script>
+</html>
