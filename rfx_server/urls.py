@@ -19,7 +19,9 @@ from . import views
 
 urlpatterns = [
     path('', views.index, name='index'),
+    path('dataLoad/', views.data_Load_index, name='data_Load_index'),
     path('Search', views.Search, name='Search'),
     path('admin/', admin.site.urls),
+    path('dataLoad/Import', views.Import, name='data_Import'),
 
 ]

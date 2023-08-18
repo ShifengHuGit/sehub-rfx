@@ -79,14 +79,15 @@ b {
     font-weight: bold;
 }
 .card {
-    width: 200px;
-    height: 100px;
+    /* width: 200px; */
+    /* height: 100px; */
     padding: 8px; /* 设置内边距 */
     border-radius: 10px; /* 添加圆角 */
     background-color: #f0f0f0; /* 设置灰色背景颜色 */
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
-    margin-bottom: 10px;
-    margin-top: 15px;
+    /* margin-bottom: 10px;
+    margin-top: 15px; */
+    margin:10px;
     transition: all 0.9s ease-in-out;
     overflow: hidden;
   }
@@ -97,6 +98,16 @@ b {
     word-wrap: break-word;
   }
 
+  .card-del
+  {
+    padding: 8px; /* 设置内边距 */
+    border-radius: 7px; /* 添加圆角 */
+    background-color: #f1dc52; /* 设置灰色背景颜色 */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
+    margin:10px;
+    transition: all 0.9s ease-in-out;
+    overflow: hidden;
+  }
 
 
   .card-s {
@@ -168,6 +179,77 @@ b {
     backdrop-filter: blur(5px);
     background: rgba(0,0,0,.7);
     
+  }
+
+  .vertical-container {
+    display: flex;
+    flex-direction: column; /* 垂直排列 */
+    align-items: center; /* 居中对齐 */
+    text-align: center;
+  }
+
+  .question_bar {
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    justify-content: center;
+    
+    border-radius: 10px;
+    background-color: #f9f9f900;
+    
+  }
+
+  .icon_style {
+    padding-left: 10px;
+    padding-right: 10px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+
+  }
+
+  .copy_icon {
+    border-radius: 10px;
+    background-color: #e82556;
+    text-align: center;
+    color: #f0f0f0;
+    font-weight: bolder;
+    padding-left: 40px;
+    padding-right: 40px;
+    cursor: pointer;
+  }
+
+  .yes_icon {
+    border-radius: 12px;
+    background-color: #e82556;
+    text-align: center;
+    color: #f0f0f0;
+    font-weight: bolder;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-right: 20px;
+    cursor: pointer;
+  }
+
+  .no_icon {
+    border-radius: 12px;
+    background-color: #2b3cbc;
+    text-align: center;
+    color: #f0f0f0;
+    font-weight: bolder;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: 20px;
+    cursor: pointer;
+  }
+
+  .fade-out {
+    opacity: 0;
+    transition: opacity 2s ease;
+  }
+  .slide-out {
+    transform: translateX(100%); /* 初始位置在右边 */
+    transition: transform 1.8s ease; /* 过渡效果 */
   }
 
   .title_logo {

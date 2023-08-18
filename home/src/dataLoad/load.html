@@ -30,7 +30,7 @@
                 </path>
               </svg>
             
-            <p class="head_logo"> SE HUB RFX SYSTEM</p>
+            <p class="head_logo"> Data Load SYSTEM</p>
             {% csrf_token %}
         </div>
     </header>
@@ -38,25 +38,46 @@
        
     </section>
     <main id="app-body" class="ms-welcome__main" style="display: none; margin-top: 150px;">
+
+
         <div>
-            <button id="getCellData" class="btn btn-gray-800">質問コピー</button>
+            <button id="getRangeBtn" class="btn btn-gray-800">IMPORT</button>
+          </div>
+
+        <div>
+            <div>
+              <label for="question">Question:</label>
+              <input type="text" id="q_rangeInput" name="question" />
+            </div>
+            <div>
+              <label for="answer">Answer:</label>
+              <input type="text" id="a_rangeInput" name="answer" />
+            </div>
+            <div>
+              <label for="flag">Flag:</label>
+              <input type="text" id="f_rangeInput" name="flag" />
+            </div>
+            <div>
+              <label for="comment">Comment:</label>
+              <input type="text" id="c_rangeInput" name="comment" />
+            </div>
+            <div>
+              <label for="other">Other:</label>
+              <input type="text" id="o_rangeInput" name="other" />
+            </div>
         </div>
 
-        <div class="card" style="height: 20px;">収録項目:{{ record_count }}
+        <div  class="card">
+         <div>Index:{{ Index_name }}</div>
+         <div>記録数:{{record_number}}</div> 
+         <div id="text"> </div>
         </div>
-        <div id="text" class="card">ここで選択された内容を表示します
-        </div>
-        <div id="selected-card" class="card-s">
-            <div class="divContainer-row ">
-                <div class="div-row" style="text-align: right;">検索 Keyword:</div>
-                <div class="div-row" style="text-align: left;" id="selected-text"> </div>
-            </div>
-        </div>      
+   
     </main>
 </body>
     <!-- Office JavaScript API -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
     <script type="text/javascript" src="{% static 'rfx_server/functions.js' %}"></script>
-    <script type="text/javascript" src="{% static 'rfx_server/taskpane.js' %}"></script>
+    <script type="text/javascript" src="{% static 'rfx_server/dataload.js' %}"></script>
 </html>
