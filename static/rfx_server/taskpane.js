@@ -198,7 +198,7 @@ async function showSelection() {
 
       // 每次获取 Cell中的内容的时候, 清除上次查询的结果
       selectedCard.classList.remove('show');
-      console.log("Selected cell text: " + dataValue);
+      console.log("Selected cell is text: " + dataValue);
     });
 
 }
