@@ -1,6 +1,8 @@
 // Copyright (c) Microsoft Corporation.
 // Licensed under the MIT License.
 
+let canClick = true;
+
 //---------------------
 // 获取CSRF Cookie
 //---------------------
@@ -28,10 +30,25 @@ function delete_record(id)
   var divElement = document.getElementById(id);
   var parentDiv = divElement.parentNode;
   var check_bar_toremove = document.getElementById(id+"_check_bar");
-  check_bar_toremove.innerHTML = "";
-  
-  check_bar_toremove.classList.add("fade-out", "card");
+  //check_bar_toremove.innerHTML = "";
+  var token = getCookie('csrftoken');
+
+  $.ajax({
+    url: "DeleteItem",
+    method: 'POST',
+    contentType: 'application/json',
+    data: JSON.stringify({ id: id }),
+    headers: {
+      'X-CSRFToken': token // 替换为你的CSRF令牌值
+    },
+
+    success: function (data) {}
+  });
+
+
+  check_bar_toremove.classList.add("fade-out");
   check_bar_toremove.innerText = "Deleted OK";
+
   divElement.classList.add("slide-out");
 
   console.log("this record will be deleled: ", id);
@@ -80,10 +97,12 @@ function confirm_delete_item(id) {
 
       yes.onclick = function(){
         delete_record(id);
+        canClick = true;
       }
 
       no.onclick = function(){
         box.removeChild(delete_check_bar)
+        canClick = true;
       }
 }
 
@@ -115,7 +134,10 @@ function question_ctrl_bar(parent_id)
   drop_img.id = parent_id+"ctrl_delete";
   drop_img.classList.add("icon_style");
   drop_img.onclick = function() {
+    if(canClick){
+      canClick = false;
       confirm_delete_item(parent_id);
+    }
   }
 
   ctrl_bar_sub.appendChild(Good_img);
@@ -125,13 +147,32 @@ function question_ctrl_bar(parent_id)
   return ctrl_bar;
 }
 
-function create_copy_button(id)
+function copyToClipboard(text) {
+  const textarea = document.createElement('textarea');
+  textarea.value = text;
+  document.body.appendChild(textarea);
+  textarea.select();
+  document.execCommand('copy');
+  document.body.removeChild(textarea);
+}
+
+
+function create_copy_button(id, text)
 {
       //Answer bar
       var copy_button = document.createElement("div");
+      
       copy_button.classList.add("question_bar");
 
       var copy_icon = document.createElement("div");
+      copy_icon.onclick = function()
+      {
+        copyToClipboard(text);
+        copy_icon.innerText = "COPIED";
+        console.log('文本已复制到剪贴板');
+
+
+      }
       copy_icon.classList.add("copy_icon");
       copy_icon.innerText = "COPY";
       copy_icon.id = id+"_copy_button";
@@ -192,13 +233,16 @@ questionArea.addEventListener('mouseup', () => {
           // 后台返回时一个list
           data.forEach(function (item, index) {
 
+            doc_id = item.id;
             question = item.Question;
             answer = item.Answer;
             flag = item.Flag;
             comment = item.Comment;
+            console.log("Doc id:", doc_id);
+            
 
             var box = document.createElement("div");
-            box.id = "box_"+index;
+            box.id = doc_id;
             box.classList.add("card", "added-div");
             box.appendChild(question_ctrl_bar(box.id));
 
@@ -265,7 +309,7 @@ questionArea.addEventListener('mouseup', () => {
             a_paragraph.appendChild(a_img);
             q_paragraph.appendChild(q_highlighted);
             a_paragraph.appendChild(a_highlighted);        
-            a_paragraph.appendChild(create_copy_button(a_paragraph.id));
+            a_paragraph.appendChild(create_copy_button(a_paragraph.id, answer));
 
 
             // 添加类名
@@ -290,7 +334,7 @@ questionArea.addEventListener('mouseup', () => {
               c_highlighted.innerHTML = comment.replace(new RegExp(selectedText, "gi"), '<span class="highlight">$&</span>');
               c_paragraph.appendChild(c_img);
               c_paragraph.appendChild(c_highlighted);
-              c_paragraph.appendChild(create_copy_button(c_paragraph.id));
+              c_paragraph.appendChild(create_copy_button(c_paragraph.id, comment));
               c_paragraph.classList.add("card-a");
               box.appendChild(c_paragraph);
             }

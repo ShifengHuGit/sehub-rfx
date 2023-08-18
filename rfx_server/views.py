@@ -94,8 +94,14 @@ def Search(request):
     }
     search_results = es.search(index=index_name, body = query)
     for hit in search_results['hits']['hits']:
-        print(hit['_source'])
-        return_list.append(hit['_source'])
+        print("ID:", hit['_id'])
+        
+        doc_id = hit['_id']
+        doc_source = hit['_source']
+        doc_with_id = {'id': doc_id, **doc_source}
+
+        print(doc_with_id)
+        return_list.append(doc_with_id)
     
     data = return_list
 
@@ -129,6 +135,26 @@ def Import(request):
     print("JSON QA对象数量:", object_count)
     
     return JsonResponse(object_count, status=200, safe=False)
+
+
+def deleteItem(request):
+    doc_id = json.loads(request.body)["id"]
+    
+    print(doc_id)
+
+    es = Elasticsearch(
+        "https://localhost:9200",
+        ca_certs="/etc/elasticsearch/certs/http_ca.crt",
+        basic_auth=("elastic", ELASTIC_PASSWORD)
+    )
+    try:
+        response = es.delete(index=index_name, id=doc_id)
+        print('Document deleted:', response)
+        return JsonResponse("Success", status=200, safe=False)
+    except Exception as e:
+        print('Error deleting document:', e)
+        return JsonResponse("Failed", status=404, safe=False)
+
     
 
 def delete_index(request):
@@ -151,5 +177,7 @@ def delete_index(request):
         print("发生错误:", e)
 
     return JsonResponse("Success", status=200, safe=False)
+
+
 
 

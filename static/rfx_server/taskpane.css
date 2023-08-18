@@ -101,9 +101,9 @@ b {
   .card-del
   {
     padding: 8px; /* 设置内边距 */
-    border-radius: 7px; /* 添加圆角 */
-    background-color: #f1dc52; /* 设置灰色背景颜色 */
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
+    border-radius: 20px; /* 添加圆角 */
+    background-color: rgba(67, 199, 232, 0.908);/* 设置灰色背景颜色 */
+    box-shadow: 10px 20px 24px rgba(231, 221, 221, 0.5); /* 添加阴影效果 */
     margin:10px;
     transition: all 0.9s ease-in-out;
     overflow: hidden;
@@ -118,8 +118,8 @@ b {
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* 添加阴影效果 */
     display: none; /* 初始隐藏div */
     justify-content: space-between;
-    opacity: 0; /* 初始透明度为0 */
-    transition: opacity 0.9s; /* 添加过渡效果 */
+    opacity: 0; 
+    /* transition: opacity 0.9s;  */
   }
 
   .card-q {
@@ -149,7 +149,7 @@ b {
 
   .show {
     display: block !important; /* 重要：强制显示div */
-    opacity: 1; /* 设置透明度为1 */
+    opacity: 1; 设置透明度为1
   }
 
   .head_logo {

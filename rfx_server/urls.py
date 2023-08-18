@@ -22,6 +22,6 @@ urlpatterns = [
     path('dataLoad/', views.data_Load_index, name='data_Load_index'),
     path('Search', views.Search, name='Search'),
     path('admin/', admin.site.urls),
+    path('DeleteItem', views.deleteItem, name='data_delete'),
     path('dataLoad/Import', views.Import, name='data_Import'),
-
 ]
