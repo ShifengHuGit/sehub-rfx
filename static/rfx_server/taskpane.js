@@ -431,6 +431,7 @@ async function showSelection() {
 
       questionFeild = document.getElementById('text');
       questionFeild.classList.add("expand");
+      questionFeild.classList.remove("gary-text");
       questionFeild.innerText = dataValue;
 
       // 每次获取 Cell中的内容的时候, 清除上次查询的结果
