@@ -1,84 +1,97 @@
 <!-- Copyright (c) Microsoft Corporation.
      Licensed under the MIT License. -->
-     
+
 <!-- This file shows how to design a first-run page that provides a welcome screen to the user about the features of the add-in. -->
 {% load static %}
 <!DOCTYPE html>
 <html>
 
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Contoso Task Pane Add-in</title>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Contoso Task Pane Add-in</title>
 
 
 
 
-    <!-- For more information on Office UI Fabric, visit https://developer.microsoft.com/fabric. -->
-    <link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.1/css/fabric.min.css"/>
+  <!-- For more information on Office UI Fabric, visit https://developer.microsoft.com/fabric. -->
+  <link rel="stylesheet"
+    href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.1/css/fabric.min.css" />
 
-    <!-- Template styles -->
-    <link href="{% static 'rfx_server/taskpane.css' %}" rel="stylesheet" type="text/css" />
+  <!-- Template styles -->
+  <link href="{% static 'rfx_server/taskpane.css' %}" rel="stylesheet" type="text/css" />
 </head>
 
 <body class="ms-font-m ms-welcome ms-Fabric">
-    <header>
-        <div class="title_header" style="border-bottom: 1px solid rgb(113, 108, 108);">
-            <svg class="u30-oicn" xmlns="http://www.w3.org/2000/svg" width="64" height="42" viewBox="0 0 32 21">
-                <path fill="#C74634" d="M9.9,20.1c-5.5,0-9.9-4.4-9.9-9.9c0-5.5,4.4-9.9,9.9-9.9h11.6c5.5,0,9.9,4.4,9.9,9.9c0,5.5-4.4,9.9-9.9,9.9H9.9 M21.2,16.6c3.6,0,6.4-2.9,6.4-6.4c0-3.6-2.9-6.4-6.4-6.4h-11c-3.6,0-6.4,2.9-6.4,6.4s2.9,6.4,6.4,6.4H21.2">
-                </path>
-              </svg>
-            
-            <p class="head_logo"> Data Load SYSTEM</p>
-            {% csrf_token %}
-        </div>
-    </header>
-    <section id="sideload-msg" class="ms-welcome__main">
-       
-    </section>
-    <main id="app-body" class="ms-welcome__main" style="display: none; margin-top: 150px;">
+  <header>
+    <div class="title_header" style="border-bottom: 1px solid rgb(113, 108, 108);">
+      <svg class="u30-oicn" xmlns="http://www.w3.org/2000/svg" width="64" height="42" viewBox="0 0 32 21">
+        <path fill="#C74634"
+          d="M9.9,20.1c-5.5,0-9.9-4.4-9.9-9.9c0-5.5,4.4-9.9,9.9-9.9h11.6c5.5,0,9.9,4.4,9.9,9.9c0,5.5-4.4,9.9-9.9,9.9H9.9 M21.2,16.6c3.6,0,6.4-2.9,6.4-6.4c0-3.6-2.9-6.4-6.4-6.4h-11c-3.6,0-6.4,2.9-6.4,6.4s2.9,6.4,6.4,6.4H21.2">
+        </path>
+      </svg>
+
+      <p class="head_logo"> Data Load SYSTEM</p>
+      {% csrf_token %}
+    </div>
+  </header>
+  <section id="sideload-msg" class="ms-welcome__main">
+
+  </section>
+  <main id="app-body" class="ms-welcome__main" style="display: none; margin-top: 150px;">
+    <div class="bg"></div>
+    <div class="bg bg2"></div>
+    <div class="bg bg3"></div>
 
 
-        <div>
-            <button id="getRangeBtn" class="btn btn-gray-800">IMPORT</button>
-          </div>
 
-        <div>
-            <div>
-              <label for="question" class="white-text">Question:</label>
-              <input type="text" id="q_rangeInput" name="question" />
-            </div>
-            <div>
-              <label for="answer" class="white-text">Answer:</label>
-              <input type="text" id="a_rangeInput" name="answer" />
-            </div>
-            <div>
-              <label for="flag" class="white-text">Flag:</label>
-              <input type="text" id="f_rangeInput" name="flag" />
-            </div>
-            <div>
-              <label for="comment" class="white-text">Comment:</label>
-              <input type="text" id="c_rangeInput" name="comment" />
-            </div>
-            <div>
-              <label for="other" class="white-text">Other:</label>
-              <input type="text" id="o_rangeInput" name="other" />
-            </div>
-        </div>
+    <div>
+      <div class="container">
+        <label for="question" class="white-text">* Question:</label>
+        <input type="text" id="q_rangeInput" name="question" />
+      </div>
+      <div class="container">
+        <label for="answer" class="white-text">* Answer:</label>
+        <input type="text" id="a_rangeInput" name="answer" />
+      </div>
+      <div class="container">
+        <label for="flag" class="white-text">Flag:</label>
+        <input type="text" id="f_rangeInput" name="flag" />
+      </div>
+      <div class="container">
+        <label for="comment" class="white-text">Comment:</label>
+        <input type="text" id="c_rangeInput" name="comment" />
+      </div>
+      <div class="container">
+        <label for="other" class="white-text">Other:</label>
+        <input type="text" id="o_rangeInput" name="other" />
+      </div>
+    </div>
 
-        <div  class="card">
-         <div>Index:{{ Index_name }}</div>
-         <div>記録数:{{record_number}}</div> 
-         <div id="text"> </div>
-        </div>
-        <a  href="/" id="btn-data-loader" class="button btn btn-gray-800" style="margin-bottom: 10px;" >Back </a>
-   
-    </main>
+    <div class="divParent-row">
+      <div class="div-row" style="width: 70px;">
+        <button id="getRangeBtn" class="btn btn-gray-800" >IMPORT</button>
+      </div>
+      <div class="div-row" style="width: 70px;"> 
+        <a href="/" id="btn-data-loader" class="button btn btn-gray-800" style="margin: 2px; width: 48px;">BACK</a>
+      </div>
+    </div>
+    <div class="card">
+      <div>INDEX名:{{ Index_name }}</div>
+      <div>記録数:{{record_number}}</div>
+    </div>
+    <div class="card">
+      <div>例：Quesiton (必須) E5:E36 </div>
+      <div>   　Answer (必須)  H5:H36 </div>
+      
+    </div>
+  </main>
 </body>
-    <!-- Office JavaScript API -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
-    <script type="text/javascript" src="{% static 'rfx_server/functions.js' %}"></script>
-    <script type="text/javascript" src="{% static 'rfx_server/dataload.js' %}"></script>
+<!-- Office JavaScript API -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="https://appsforoffice.microsoft.com/lib/1/hosted/office.js"></script>
+<script type="text/javascript" src="{% static 'rfx_server/functions.js' %}"></script>
+<script type="text/javascript" src="{% static 'rfx_server/dataload.js' %}"></script>
+
 </html>
