@@ -9,9 +9,9 @@
   <DefaultLocale>en-US</DefaultLocale>
   <DisplayName DefaultValue="SEHUB RFX SYSTEM"/>
   <Description DefaultValue="This tool will help to you to search the Question/answer form the history record."/>
-  <IconUrl DefaultValue="http://152.69.194.167:5000/static/rfx_server/asset/logo-small.png"/>
+  <IconUrl DefaultValue="http://138.2.33.202:5000/static/rfx_server/asset/logo-small.png"/>
 
-  <HighResolutionIconUrl DefaultValue="http://152.69.194.167:5000/static/rfx_server/asset/logo-2.png"/>
+  <HighResolutionIconUrl DefaultValue="http://138.2.33.202:5000/static/rfx_server/asset/logo-2.png"/>
 
   <SupportUrl DefaultValue="https://mysites.oracle.com/SEHub-Tech/"/>
   <AppDomains>
@@ -27,7 +27,7 @@
     </Sets>
   </Requirements>
   <DefaultSettings>
-    <SourceLocation DefaultValue="http://152.69.194.167:5000/"/>
+    <SourceLocation DefaultValue="http://138.2.33.202:5000/"/>
   </DefaultSettings>
   <Permissions>ReadWriteDocument</Permissions>
   <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
@@ -89,15 +89,15 @@
     </Hosts>
     <Resources>
       <bt:Images>
-        <bt:Image id="Icon.16x16" DefaultValue="http://152.69.194.167:5000/static/rfx_server/asset/icon-16.png"/>
-        <bt:Image id="Icon.32x32" DefaultValue="http://152.69.194.167:5000/static/rfx_server/asset/icon-32.png"/>
+        <bt:Image id="Icon.16x16" DefaultValue="http://138.2.33.202:5000/static/rfx_server/asset/icon-16.png"/>
+        <bt:Image id="Icon.32x32" DefaultValue="http://138.2.33.202:5000/static/rfx_server/asset/icon-32.png"/>
         <bt:Image id="Icon.80x80" DefaultValue="https://shifenghugit.github.io/Office-Add-in-samples/Excel-custom-functions/Batching/assets/icon-80-new.png"/>
       </bt:Images>
       <bt:Urls>
-        <bt:Url id="Functions.Script.Url" DefaultValue="http://152.69.194.167:5000/static/rfx_server/functions.js"/>
-        <bt:Url id="Functions.Metadata.Url" DefaultValue="http://152.69.194.167:5000/static/rfx_server/functions.json"/>
+        <bt:Url id="Functions.Script.Url" DefaultValue="http://138.2.33.202:5000/static/rfx_server/functions.js"/>
+        <bt:Url id="Functions.Metadata.Url" DefaultValue="http://138.2.33.202:5000/static/rfx_server/functions.json"/>
         <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812"/>
-        <bt:Url id="Taskpane.Url" DefaultValue="http://152.69.194.167:5000/"/>
+        <bt:Url id="Taskpane.Url" DefaultValue="http://138.2.33.202:5000/"/>
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="Functions.Namespace" DefaultValue="SEHUB"/>
@@ -112,4 +112,3 @@
     </Resources>
   </VersionOverrides>
 </OfficeApp>
-
